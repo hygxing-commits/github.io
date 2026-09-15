@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>机械创新实验室（八教团队）— 门户网站</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --primary-light: #283593;
+            --primary-dark: #0d1642;
+            --accent: #c62828;
+            --accent-light: #e53935;
+            --gold: #bfa15a;
+            --gold-light: #d4b86a;
+            --text: #333333;
+            --text-light: #666666;
+            --bg: #f5f5f5;
+            --white: #ffffff;
+            --success: #2e7d32;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+        
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--primary-light) 100%);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/><circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/><circle cx="50" cy="50" r="20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></svg>');
+            background-size: 200px 200px;
+            opacity: 0.5;
+        }
+        
+        .hero-content { position: relative; z-index: 2; max-width: 900px; }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(191,161,90,0.2);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .badge::before, .badge::after {
+            content: '◆';
+            font-size: 0.5rem;
+            opacity: 0.7;
+        }
+        
+        .hero h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            color: var(--white);
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            margin-bottom: 0.5rem;
+            letter-spacing: 4px;
+        }
+        
+        .hero .subtitle {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: var(--gold);
+            font-weight: 300;
+            letter-spacing: 6px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-desc {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.05rem;
+            line-height: 2;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            color: var(--primary-dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            box-shadow: 0 4px 20px rgba(191,161,90,0.4);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(191,161,90,0.5);
+        }
+        
+        .cta-btn-outline {
+            display: inline-block;
+            background: transparent;
+            color: var(--gold);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            border: 2px solid var(--gold);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .cta-btn-outline:hover {
+            background: var(--gold);
+            color: var(--primary-dark);
+        }
+        
+        .emblem {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 40px rgba(191,161,90,0.4), inset 0 0 20px rgba(255,255,255,0.3);
+            position: relative;
+        }
+        
+        .emblem::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 50%;
+        }
+        
+        .emblem-text {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+        }
+        
+        .scroll-hint {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        
+        /* ===== NAV ===== */
+        .nav {
+            position: sticky;
+            top: 0;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            z-index: 100;
+            padding: 0;
+        }
+        
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0;
+        }
+        
+        .nav a {
+            padding: 1rem 1.1rem;
+            text-decoration: none;
+            color: var(--text);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .nav a:hover, .nav a.active {
+            color: var(--primary);
+            border-bottom-color: var(--gold);
+        }
+        
+        /* ===== SECTIONS ===== */
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--gold);
+            margin: 0.5rem auto 0;
+        }
+        
+        .section-header .en {
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+        }
+        
+        /* ===== PROFILE ===== */
+        .profile-section { background: var(--white); }
+        
+        .profile-card {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 2.5rem;
+            align-items: start;
+            background: #fafafa;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .profile-avatar {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            box-shadow: 0 8px 30px rgba(26,35,126,0.3);
+            margin: 0 auto;
+        }
+        
+        .profile-info h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-info .title {
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+        
+        .profile-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .profile-stat {
+            text-align: center;
+            padding: 1rem;
+            background: var(--white);
+            border-radius: 10px;
+            border-left: 3px solid var(--gold);
+        }
+        
+        .profile-stat .num {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--primary);
+        }
+        
+        .profile-stat .label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        .profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .profile-tags span {
+            background: var(--primary);
+            color: var(--white);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* ===== FITS ===== */
+        .fits-section { background: linear-gradient(180deg, #fafafa 0%, var(--white) 100%); }
+        
+        .fits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .fit-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .fit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gold);
+        }
+        
+        .fit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .fit-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        
+        .fit-card h3 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .fit-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+        
+        .fit-card .highlight {
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        /* ===== CHALLENGES ===== */
+        .challenge-section { background: var(--white); }
+        
+        .challenge-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .challenge-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--primary) 100%);
+        }
+        
+        .challenge-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+        }
+        
+        .challenge-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.3rem;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            transform: translateX(-5px);
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        
+        .challenge-item h3 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            font-size: 1.15rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .challenge-content {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1.5rem;
+        }
+        
+        .challenge-content ul { list-style: none; padding: 0; }
+        
+        .challenge-content li {
+            padding: 0.4rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.92rem;
+        }
+        
+        .challenge-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+        
+        .warn-box {
+            background: #fff3e0;
+            border-left: 4px solid #e65100;
+            padding: 1rem 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 1rem;
+        }
+        
+        .warn-box strong { color: #e65100; }
+        
+        /* ===== REQUIREMENTS ===== */
+        .req-section { background: linear-gradient(180deg, #fafafa 0%, var(--white) 100%); }
+        
+        .req-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .req-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+        
+        .req-card:hover { box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+        
+        .req-card .num {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            opacity: 0.4;
+            float: right;
+        }
+        
+        .req-card h3 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .req-card ul { list-style: none; padding: 0; }
+        
+        .req-card li {
+            padding: 0.4rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .req-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .req-alert {
+            grid-column: 1 / -1;
+            background: linear-gradient(135deg, var(--accent) 0%, #b71c1c 100%);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        .req-alert h3 {
+            font-family: 'Noto Serif SC', serif;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* ===== GROWTH ===== */
+        .growth-section {
+            background: var(--primary);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .growth-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="60" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 100px 100px;
+        }
+        
+        .growth-section .section-header h2,
+        .growth-section .section-header .en { color: var(--white); }
+        
+        .growth-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .growth-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+        
+        .growth-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        
+        .growth-card h3 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--gold);
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .growth-card p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.8;
+        }
+        
+        .destinations {
+            margin-top: 3rem;
+            position: relative;
+            z-index: 2;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .destinations h3 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .dest-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .dest-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .dest-item .school {
+            font-weight: 700;
+            color: var(--white);
+            font-size: 1rem;
+        }
+        
+        .dest-item .note {
+            font-size: 0.8rem;
+            color: var(--gold);
+            margin-top: 0.3rem;
+        }
+        
+        /* ===== CULTURE ===== */
+        .culture-section { background: linear-gradient(180deg, var(--white) 0%, #fafafa 100%); }
+        
+        .flag-display {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .flag-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .flag-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .flag-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 2rem;
+        }
+        
+        .flag-card h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .flag-card p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+        
+        /* ===== MINUTES ===== */
+        .minutes-section { background: var(--white); }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--gold) 0%, var(--primary) 100%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--gold);
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            transform: translateX(-5px);
+            box-shadow: 0 0 0 2px var(--gold);
+        }
+        
+        .timeline-item h3 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-content {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--gold);
+        }
+        
+        .timeline-content ul { list-style: none; padding: 0; }
+        
+        .timeline-content li {
+            padding: 0.3rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+        
+        .timeline-content li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+        }
+        
+        /* ===== RULES ===== */
+        .rules-section { background: linear-gradient(180deg, #fafafa 0%, var(--white) 100%); }
+        
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .rule-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .rule-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold) 0%, var(--primary) 100%);
+        }
+        
+        .rule-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .rule-number {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+        }
+        
+        .rule-card h3 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            padding-right: 3rem;
+        }
+        
+        .rule-card ul { list-style: none; padding: 0; }
+        
+        .rule-card li {
+            padding: 0.4rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .rule-card li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        /* ===== ACHIEVEMENTS ===== */
+        .achievements-section {
+            background: var(--primary);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .achievements-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="60" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: 100px 100px;
+        }
+        
+        .achievements-section .section-header h2,
+        .achievements-section .section-header .en { color: var(--white); }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .stat-number {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--gold);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.8);
+            margin-top: 0.5rem;
+        }
+        
+        /* ===== SHARES ===== */
+        .shares-section { background: var(--white); }
+        
+        .shares-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .share-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s;
+        }
+        
+        .share-card:hover {
+            background: var(--white);
+            box-shadow: var(--shadow);
+        }
+        
+        .share-card .speaker {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .speaker-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .speaker-info h4 {
+            color: var(--primary);
+            font-size: 1rem;
+        }
+        
+        .speaker-info .topic {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        .share-card p {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.8;
+        }
+        
+        /* ===== QUOTE ===== */
+        .quote-section {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        .quote-section::before {
+            content: '"';
+            font-family: 'Noto Serif SC', serif;
+            font-size: 8rem;
+            color: rgba(191,161,90,0.2);
+            position: absolute;
+            top: 0;
+            left: 2rem;
+            line-height: 1;
+        }
+        
+        .quote-text {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.5rem;
+            color: var(--white);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 2;
+        }
+        
+        .quote-author {
+            color: var(--gold);
+            margin-top: 1.5rem;
+            font-size: 1rem;
+        }
+        
+        /* ===== CONTACT ===== */
+        .cta-section {
+            background: var(--white);
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+        
+        .cta-section h2 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .contact-box {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 2rem 3rem;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(26,35,126,0.3);
+        }
+        
+        .contact-box h3 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-box .qq {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+        
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--primary-dark);
+            color: rgba(255,255,255,0.7);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+        
+        .footer-emblem {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-dark);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .footer h3 {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer .tagline {
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .profile-card { grid-template-columns: 1fr; text-align: center; }
+            .profile-stats { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .nav a { padding: 0.8rem 0.6rem; font-size: 0.75rem; }
+            .hero-cta-group { flex-direction: column; align-items: center; }
+            .cta-btn, .cta-btn-outline { width: 80%; }
+        }
+        
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+    <div class="hero-content">
+        <div class="badge">TEAM STRONG · 2007</div>
+        <div class="emblem">
+            <span class="emblem-text">八教</span>
+        </div>
+        <h1>机械创新实验室</h1>
+        <p class="subtitle">八教团队门户网站</p>
+        <p class="hero-desc">
+            成都理工大学最具影响力的跨学科创新创业实践团队之一<br>
+            无论你是渴望加入的<strong>潜在成员</strong>，还是正在奋斗的<strong>八教学子</strong><br>
+            这里都有你需要的全部信息
+        </p>
+        <div class="hero-cta-group">
+            <a href="#profile" class="cta-btn">了解导师 · 申请加入</a>
+            <a href="#culture" class="cta-btn-outline">团队文化 · 成员入口</a>
+        </div>
+        <div style="margin-top:1rem;color:rgba(255,255,255,0.6);font-size:0.85rem;">
+            导师选择指南 | 会议纪要 | 管理规范 | 成果荣誉 | 经验分享
+        </div>
+    </div>
+    <div class="scroll-hint">▼ 向下滚动 ▼</div>
+</section>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="#home" class="active">首页</a>
+        <a href="#profile">导师简介</a>
+        <a href="#fits">适合人群</a>
+        <a href="#challenges">挑战与训练</a>
+        <a href="#requirements">管理要求</a>
+        <a href="#growth">成长路径</a>
+        <a href="#culture">团队文化</a>
+        <a href="#minutes">会议纪要</a>
+        <a href="#rules">管理规范</a>
+        <a href="#achievements">成果荣誉</a>
+        <a href="#shares">经验分享</a>
+        <a href="#contact">联系方式</a>
+    </div>
+</nav>
+
+<!-- ===== PROFILE ===== -->
+<section id="profile" class="section profile-section">
+    <div class="section-header">
+        <h2>导师简介</h2>
+        <div class="en">About Professor Hu Bo</div>
+    </div>
+    
+    <div class="profile-card animate-on-scroll">
+        <div>
+            <div class="profile-avatar">胡波</div>
+        </div>
+        <div class="profile-info">
+            <h3>胡波 <span style="font-size:0.9rem;color:var(--text-light);font-weight:400;">副教授 · 博士</span></h3>
+            <span class="title">机械设计制造及其自动化专业</span>
+            <p style="color:var(--text-light);font-size:0.95rem;line-height:1.9;">
+                2003年毕业于成都理工大学机械设计制造及其自动化专业，是我校第一届机械本科专业毕业生，熟悉学校专业历史。
+                主要讲授<strong>机械设计基础</strong>、<strong>机械制造工艺学</strong>等课程。
+                擅长指导学生竞赛，在新工科背景下组建了<strong>跨学科、多专业融合</strong>的大学生创新创业实践团队。
+            </p>
+            <div class="profile-stats">
+                <div class="profile-stat">
+                    <div class="num">100+</div>
+                    <div class="label">省部级以上竞赛奖励</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="num">20+</div>
+                    <div class="label">大创项目资助</div>
+                </div>
+                <div class="profile-stat">
+                    <div class="num">20+</div>
+                    <div class="label">授权专利</div>
+                </div>
+            </div>
+            <div class="profile-tags">
+                <span>工业自动化</span>
+                <span>建模仿真</span>
+                <span>智能控制</span>
+                <span>跨学科融合</span>
+                <span>竞赛指导</span>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top:2rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;">
+        <div class="animate-on-scroll" style="background:#fafafa;border-radius:12px;padding:1.5rem;">
+            <h4 style="color:var(--primary);font-family:'Noto Serif SC',serif;margin-bottom:0.8rem;">🏆 主要指导竞赛</h4>
+            <ul style="list-style:none;padding:0;font-size:0.9rem;color:var(--text-light);line-height:2;">
+                <li>▸ 中国国际大学生创新大赛（互联网+）</li>
+                <li>▸ 全国大学生机器人大赛（ROBOCON）</li>
+                <li>▸ 机械创新设计大赛</li>
+                <li>▸ 工程实践与创新能力大赛</li>
+                <li>▸ 三维数字化创新设计大赛</li>
+                <li>▸ 机器人及人工智能大赛</li>
+                <li>▸ 睿抗机器人开发者大赛</li>
+                <li>▸ 先进成图技术与产品信息建模创新大赛</li>
+            </ul>
+        </div>
+        <div class="animate-on-scroll" style="background:#fafafa;border-radius:12px;padding:1.5rem;">
+            <h4 style="color:var(--primary);font-family:'Noto Serif SC',serif;margin-bottom:0.8rem;">📚 科研成果</h4>
+            <ul style="list-style:none;padding:0;font-size:0.9rem;color:var(--text-light);line-height:2;">
+                <li>▸ 主持和参与国家级、省部级科研项目10余项</li>
+                <li>▸ 发表SCI等学术论文10余篇</li>
+                <li>▸ 发表学术论文总计30余篇</li>
+                <li>▸ 合著学术专著2部</li>
+                <li>▸ 授权发明专利5项</li>
+                <li>▸ 实用新型专利22项</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== WHO FITS ===== -->
+<section id="fits" class="section fits-section">
+    <div class="section-header">
+        <h2>什么样的同学适合加入？</h2>
+        <div class="en">Who Should Join</div>
+    </div>
+    
+    <div class="fits-grid">
+        <div class="fit-card animate-on-scroll">
+            <div class="icon">🎯</div>
+            <h3>有明确目标感</h3>
+            <p>
+                对自己有要求，希望本科阶段不只是"混毕业证"。<br>
+                无论是想<strong>保研深造</strong>、<strong>提升就业竞争力</strong>，还是<strong>真正学点本事</strong>，有清晰的目标才能坚持走下去。
+            </p>
+        </div>
+        
+        <div class="fit-card animate-on-scroll">
+            <div class="icon">🔥</div>
+            <h3>愿意主动付出</h3>
+            <p>
+                实验室的学习和工作需要付出比其他同学更多的时间和精力。<br>
+                这不是一个"挂名"的地方，而是需要<span class="highlight">长期坚持、持续投入</span>才会有收获的过程。
+            </p>
+        </div>
+        
+        <div class="fit-card animate-on-scroll">
+            <div class="icon">🤝</div>
+            <h3>具有团队意识</h3>
+            <p>
+                八教是一个<strong>集体</strong>，不是单打独斗的地方。<br>
+                能团结同学、互相帮助、协作完成项目，而不是只关心自己的竞赛加分。
+            </p>
+        </div>
+        
+        <div class="fit-card animate-on-scroll">
+            <div class="icon">📖</div>
+            <h3>追求全面发展</h3>
+            <p>
+                德智体美劳全面发展，不只是竞赛机器。<br>
+                愿意参与团队后勤、组织工作，尊重师长，<span class="highlight">踏实做人、踏实做事</span>。
+            </p>
+        </div>
+        
+        <div class="fit-card animate-on-scroll">
+            <div class="icon">💡</div>
+            <h3>对科创有兴趣</h3>
+            <p>
+                对机械设计、电子控制、编程算法、视觉设计等至少一个方向有兴趣。<br>
+                <strong>零基础不可怕</strong>，可怕的是没有学习的意愿。团队有学长学姐一对一带教。
+            </p>
+        </div>
+        
+        <div class="fit-card animate-on-scroll">
+            <div class="icon">🏃</div>
+            <h3>能接受严格管理</h3>
+            <p>
+                能接受团队的制度约束和考核要求。<br>
+                八教有明确的管理规范，<span class="highlight">达不到要求会被清退</span>。这不是宽松自在的社团，是严肃的实践团队。
+            </p>
+        </div>
+    </div>
+    
+    <div class="animate-on-scroll" style="margin-top:2rem;background:linear-gradient(135deg,#e8f5e9 0%,#c8e6c9 100%);border-radius:12px;padding:2rem;text-align:center;">
+        <h3 style="font-family:'Noto Serif SC',serif;color:var(--success);margin-bottom:1rem;">✓ 如果你符合以上3条以上，八教可能适合你</h3>
+        <p style="color:var(--text-light);">如果你只是想要一个"挂名"的导师、不愿意付出时间、只想蹭竞赛加分，建议慎重考虑。</p>
+    </div>
+</section>
+
+<!-- ===== CHALLENGES ===== -->
+<section id="challenges" class="section challenge-section">
+    <div class="section-header">
+        <h2>你将接受什么样的挑战？</h2>
+        <div class="en">Challenges & Training</div>
+    </div>
+    
+    <div class="challenge-timeline">
+        <div class="challenge-item animate-on-scroll">
+            <h3>📐 技能训练体系</h3>
+            <div class="challenge-content">
+                <ul>
+                    <li><strong>CAD三维建模</strong> — 从简单零件到复杂装配体，需要长期高强度练习</li>
+                    <li><strong>单片机/PLC/AI开发</strong> — 电控、视觉算法、运动控制</li>
+                    <li><strong>文档撰写与PPT制作</strong> — 项目报告、路演演讲、答辩训练</li>
+                    <li><strong>摄影/PS/视频剪辑</strong> — 视觉设计与宣传能力</li>
+                    <li><strong>英语四六级及口语</strong> — 提升国际化能力</li>
+                </ul>
+                <div class="warn-box">
+                    <strong>注意：</strong>训练任务会设置多轮阶段性检查，严禁抄袭、AI敷衍。暑假期间仍需坚持训练。
+                </div>
+            </div>
+        </div>
+        
+        <div class="challenge-item animate-on-scroll">
+            <h3>🏆 竞赛实战历练</h3>
+            <div class="challenge-content">
+                <ul>
+                    <li>机械创新设计大赛 — 需完成从设计到样机制作的全流程</li>
+                    <li>ROBOCON机器人大赛 — 机械+电控+视觉的综合挑战</li>
+                    <li>工程实践与创新能力大赛 — 太阳能/智能物流/救援等赛道</li>
+                    <li>成图大赛 — 全年累计数百小时建模练习</li>
+                    <li>互联网+/挑战杯 — 需要跨专业协作，完成商业转化</li>
+                </ul>
+                <div class="warn-box">
+                    <strong>注意：</strong>竞赛负责人需按项目经理标准履职，赛前制定计划、定期汇报、赛后归档复盘。
+                </div>
+            </div>
+        </div>
+        
+        <div class="challenge-item animate-on-scroll">
+            <h3>🔬 科研与项目实践</h3>
+            <div class="challenge-content">
+                <ul>
+                    <li>大学生创新创业训练计划项目（大创）— 国家级/省级立项</li>
+                    <li>参与老师的科研课题 — 工业自动化、建模仿真、智能控制方向</li>
+                    <li>撰写学术论文、申请专利 — 需提前规划，避免错过推免节点</li>
+                    <li>企业实习 — 了解真实工程环境，积累实践经验</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="challenge-item animate-on-scroll">
+            <h3>⚡ 团队公共事务</h3>
+            <div class="challenge-content">
+                <ul>
+                    <li>实验室日常值班 — 不是签到就走，要参与交流和维护</li>
+                    <li>设备管理与维护 — 工具归位、卫生清洁、物资整理</li>
+                    <li>赛事组织与协调 — 协助办赛、信息收集、资料归档</li>
+                    <li>财务报销协助 — 票据整理、经费管理</li>
+                </ul>
+                <div class="warn-box">
+                    <strong>注意：</strong>排斥值班、赛事组织、财务等公共事务的同学不适合加入。集体工作与竞赛同样重要。
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== REQUIREMENTS ===== -->
+<section id="requirements" class="section req-section">
+    <div class="section-header">
+        <h2>你需要达到什么要求？</h2>
+        <div class="en">Requirements & Rules</div>
+    </div>
+    
+    <div class="req-grid">
+        <div class="req-card animate-on-scroll">
+            <span class="num">01</span>
+            <h3>人员融合要求</h3>
+            <ul>
+                <li>进入实验室<strong>3个月内</strong>认识全部成员</li>
+                <li>主动加学长学姐联系方式，不用临时窗口</li>
+                <li>定期主动向老师汇报学习和工作情况</li>
+                <li>积极参加团建、大会等集体活动</li>
+            </ul>
+        </div>
+        
+        <div class="req-card animate-on-scroll">
+            <span class="num">02</span>
+            <h3>值班与场地规范</h3>
+            <ul>
+                <li>签到后须参与交流，不得立即离场</li>
+                <li>单学期请假不得超过3次</li>
+                <li>个人物品不得乱堆乱放</li>
+                <li>工具使用后必须归位</li>
+            </ul>
+        </div>
+        
+        <div class="req-card animate-on-scroll">
+            <span class="num">03</span>
+            <h3>任务完成标准</h3>
+            <ul>
+                <li>惩罚任务、暑期训练须按时完成</li>
+                <li>严禁抄袭、下载网络成品、AI敷衍</li>
+                <li>提交文件须符合命名和格式规范</li>
+                <li>分年级差异化任务，接受阶段性检查</li>
+            </ul>
+        </div>
+        
+        <div class="req-card animate-on-scroll">
+            <span class="num">04</span>
+            <h3>竞赛管理规范</h3>
+            <ul>
+                <li>提前研读赛题、制定备赛计划</li>
+                <li>定期组织队内进度汇报</li>
+                <li>申报材料多层复核，杜绝低级错误</li>
+                <li>赛后5日内完成资料归档</li>
+            </ul>
+        </div>
+        
+        <div class="req-card animate-on-scroll">
+            <span class="num">05</span>
+            <h3>跨专业协作要求</h3>
+            <ul>
+                <li>综合类双创项目须跨专业组队</li>
+                <li>主动与经管、工业设计同学沟通</li>
+                <li>具备成本测算和市场意识</li>
+                <li>学会用商业语言表述技术价值</li>
+            </ul>
+        </div>
+        
+        <div class="req-card animate-on-scroll">
+            <span class="num">06</span>
+            <h3>科研成果规划</h3>
+            <ul>
+                <li>大一下提前确定论文/专利方向</li>
+                <li>大二暑假前形成完整创新方案</li>
+                <li>了解期刊录用周期和预警名单</li>
+                <li>主动请教学长学姐全流程经验</li>
+            </ul>
+        </div>
+        
+        <div class="req-alert animate-on-scroll">
+            <h3>⚠️ 以下情况将被清退出团队</h3>
+            <p>1. 在团队超3个月不认识其他成员 | 2. 三次无故未完成惩罚任务 | 3. 经认定工作不积极、拒不配合安排 | 4. 训练无明显进步且课程学习无进步</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== GROWTH ===== -->
+<section id="growth" class="section growth-section">
+    <div class="section-header">
+        <h2>你将成长为什么样的人？</h2>
+        <div class="en">What You Will Become</div>
+    </div>
+    
+    <div class="growth-grid">
+        <div class="growth-card animate-on-scroll">
+            <div class="icon">🎓</div>
+            <h3>专业能力强</h3>
+            <p>
+                掌握CAD建模、单片机开发、算法设计等硬核技能。<br>
+                从图纸到实物，从代码到产品，具备完整的工程实践能力。
+            </p>
+        </div>
+        
+        <div class="growth-card animate-on-scroll">
+            <div class="icon">🌐</div>
+            <h3>视野开阔</h3>
+            <p>
+                跨学科融合思维：机械×计算机×工管×工业设计。<br>
+                不仅懂技术，还懂商业、懂市场、懂团队协作。
+            </p>
+        </div>
+        
+        <div class="growth-card animate-on-scroll">
+            <div class="icon">💪</div>
+            <h3>抗压与执行力</h3>
+            <p>
+                经历通宵调试设备、赛前紧急修改、赛场突发故障。<br>
+                培养了极强的抗压能力、应变能力和项目管理能力。
+            </p>
+        </div>
+        
+        <div class="growth-card animate-on-scroll">
+            <div class="icon">🏅</div>
+            <h3>履历亮眼</h3>
+            <p>
+                国家级/省级竞赛奖项、大创项目、专利论文。<br>
+                为保研、考研、就业积累强有力的竞争优势。
+            </p>
+        </div>
+    </div>
+    
+    <div class="destinations animate-on-scroll">
+        <h3>🎓 往届学长学姐毕业去向（2026届部分）</h3>
+        <div class="dest-grid">
+            <div class="dest-item">
+                <div class="school">浙江大学</div>
+                <div class="note">袁天恩</div>
+            </div>
+            <div class="dest-item">
+                <div class="school">湖南大学</div>
+                <div class="note">吴雨晨、刘伟</div>
+            </div>
+            <div class="dest-item">
+                <div class="school">南京理工大学</div>
+                <div class="note">廖耘浩</div>
+            </div>
+            <div class="dest-item">
+                <div class="school">西南交通大学</div>
+                <div class="note">陈留洋、张宗伟</div>
+            </div>
+            <div class="dest-item">
+                <div class="school">哈尔滨工程大学</div>
+                <div class="note">方媛</div>
+            </div>
+            <div class="dest-item">
+                <div class="school">成都理工大学（直博）</div>
+                <div class="note">彭正钞</div>
+            </div>
+            <div class="dest-item">
+                <div class="school">南方科技大学</div>
+                <div class="note">任蕊婷</div>
+            </div>
+            <div class="dest-item">
+                <div class="school">同济大学</div>
+                <div class="note">李双锣</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="animate-on-scroll" style="margin-top:3rem;position:relative;z-index:2;text-align:center;">
+        <div style="background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border-radius:12px;padding:2rem;border:1px solid rgba(255,255,255,0.2);max-width:700px;margin:0 auto;">
+            <h3 style="font-family:'Noto Serif SC',serif;color:var(--gold);margin-bottom:1rem;">胡波老师对学生的期望</h3>
+            <p style="color:rgba(255,255,255,0.9);line-height:2;font-size:1.05rem;">
+                "培养<strong>积极主动</strong>、有<strong>上进心</strong>、具有<strong>强烈集体荣誉感和团队意识</strong>、<br>
+                <strong>德智体美劳全面发展</strong>的学生。"<br><br>
+                爱好户外运动、篮球、摄影 — 学习之外，也要热爱生活。
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== CULTURE ===== -->
+<section id="culture" class="section culture-section">
+    <div class="section-header">
+        <h2>团队文化</h2>
+        <div class="en">Team Culture</div>
+    </div>
+    
+    <div class="flag-display">
+        <div class="flag-card animate-on-scroll">
+            <div class="flag-icon">旗</div>
+            <h3>团队旗帜</h3>
+            <p>TEAM STRONG · 2007<br>十八载传承，八教精神永存</p>
+        </div>
+        <div class="flag-card animate-on-scroll">
+            <div class="flag-icon">徽</div>
+            <h3>团队徽章</h3>
+            <p>象征团队荣誉与责任<br>每位成员的身份标识</p>
+        </div>
+        <div class="flag-card animate-on-scroll">
+            <div class="flag-icon">训</div>
+            <h3>团队训言</h3>
+            <p>德智体美劳全面发展<br>踏实做人，踏实做事</p>
+        </div>
+        <div class="flag-card animate-on-scroll">
+            <div class="flag-icon">融</div>
+            <h3>跨学科融合</h3>
+            <p>机械×计算机×工管×工业设计<br>多学科协同创新</p>
+        </div>
+    </div>
+    
+    <div class="animate-on-scroll" style="margin-top: 3rem; text-align: center;">
+        <div style="background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: white; padding: 2rem; border-radius: 12px;">
+            <h3 style="font-family: 'Noto Serif SC', serif; font-size: 1.3rem; margin-bottom: 1rem;">八教团队核心价值观</h3>
+            <p style="font-size: 1.1rem; line-height: 2;">
+                "八教"是一个实验室，更是一个集体<br>
+                大家要团结友爱、互相帮助、互相协作、共同成长<br>
+                积极主动，选择适合自己的竞赛，建立协作精神的团队<br>
+                保持激情和积极的心态，让大学的每一天都过得有意义
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== MINUTES ===== -->
+<section id="minutes" class="section minutes-section">
+    <div class="section-header">
+        <h2>会议纪要</h2>
+        <div class="en">Meeting Minutes</div>
+        <p style="color: var(--text-light); margin-top: 1rem;">会议时间：2026年7月13日 · 2026年第二次全体会议暨期末总结大会</p>
+    </div>
+    
+    <div class="timeline">
+        <div class="timeline-item animate-on-scroll">
+            <h3>一、实验室管理层面突出问题通报</h3>
+            <div class="timeline-content">
+                <ul>
+                    <li>人员团队管理体系失效：成员融合管理缺失，团队意识淡薄</li>
+                    <li>人员准入、淘汰规则长期宽松，执行流于形式</li>
+                    <li>日常值班、场地与设备管理混乱</li>
+                    <li>任务考核、惩罚训练管理不严</li>
+                    <li>竞赛全流程管理不标准化，负责人履职被动</li>
+                    <li>财务经费管理存在流程漏洞</li>
+                    <li>文档、成果规划管理缺乏前置引导</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="timeline-item animate-on-scroll">
+            <h3>二、全新管理整改措施发布</h3>
+            <div class="timeline-content">
+                <ul>
+                    <li><strong>人员管理整改：</strong>进入实验室3个月内认识全部成员，否则清退；无故缺席纳入考核；明确4类清退情形</li>
+                    <li><strong>值班与场地整改：</strong>强化值班监督，多次超量请假群内通报；物品乱堆放罚款5元；设备借用必须登记报备</li>
+                    <li><strong>任务考核整改：</strong>暑期训练、惩罚任务分年级差异化布置，多轮阶段性检查；严查抄袭、AI敷衍行为</li>
+                    <li><strong>竞赛管理标准化：</strong>按项目经理标准履职；申报材料多层复核；赛后5日内完成云盘归档</li>
+                    <li><strong>财务流程标准化：</strong>统一报销票据备注要求；线上台账实时同步公示</li>
+                    <li><strong>文档与科研规划整改：</strong>统一发放公文、报销、赛事归档全套模板；引导大一大二提前规划科研成果</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="timeline-item animate-on-scroll">
+            <h3>三、经验分享环节</h3>
+            <div class="timeline-content">
+                <ul>
+                    <li>张扬：大学生涯规划及保研推免经验分享</li>
+                    <li>张靖泽：挑战杯/互联网+竞赛商业成果转化落地经验</li>
+                    <li>段宏斌：参与企业实习心得体会</li>
+                    <li>孙洁：组织比赛经验分享</li>
+                    <li>邹馨棋：参加各类比赛心得体会</li>
+                    <li>夏铭卓：建模训练及成图大赛准备经验</li>
+                    <li>胡好：跨专业交流、撰写专利及论文经验</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="timeline-item animate-on-scroll">
+            <h3>四、暑期竞赛规划部署</h3>
+            <div class="timeline-content">
+                <ul>
+                    <li><strong>工训比赛：</strong>杨子轩汇报备赛计划，8月完成全部装配调试</li>
+                    <li><strong>RoboCon：</strong>谢志伟汇报后期准备规划，8月底组织综合任务考核</li>
+                    <li><strong>成图大赛：</strong>王斌汇报国赛安排，7月21日于成都举办</li>
+                    <li><strong>互联网+/挑战杯：</strong>张靖泽汇报科创成果转化与商业落地</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="timeline-item animate-on-scroll">
+            <h3>五、表彰与总结</h3>
+            <div class="timeline-content">
+                <ul>
+                    <li>突出贡献表彰：邹婷、吴雨晨、廖耘浩、李双锣、张琢川、刘伟等</li>
+                    <li>2026届升学喜报：湖南大学、南京理工大学、西南交通大学、浙江大学等</li>
+                    <li>胡波老师总结：规划好大学生活，让每一天都过得有意义</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== RULES ===== -->
+<section id="rules" class="section rules-section">
+    <div class="section-header">
+        <h2>实验室管理规范</h2>
+        <div class="en">Management Regulations</div>
+        <p style="color: var(--text-light); margin-top: 1rem;">自2026年7月13日起执行 · 机械创新实验室（八教）团队</p>
+    </div>
+    
+    <div class="rules-grid">
+        <div class="rule-card animate-on-scroll">
+            <span class="rule-number">01</span>
+            <h3>人员准入与清退制度</h3>
+            <ul>
+                <li>进入实验室3个月内须认识全部本实验室成员</li>
+                <li>现场识别不出成员者直接清退</li>
+                <li>无故缺席集体活动纳入考核记录</li>
+                <li>明确4类清退情形并严格执行</li>
+                <li>树立团队贡献同等评优标准</li>
+            </ul>
+        </div>
+        
+        <div class="rule-card animate-on-scroll">
+            <span class="rule-number">02</span>
+            <h3>日常值班管理</h3>
+            <ul>
+                <li>签到后不得立即离场，须参与实验室交流</li>
+                <li>多次超量请假（单学期超3次）群内通报</li>
+                <li>无故缺岗纳入考核并公示</li>
+                <li>值班期间参与环境维护与团队交流</li>
+                <li>请假须提前报备并说明合理理由</li>
+            </ul>
+        </div>
+        
+        <div class="rule-card animate-on-scroll">
+            <span class="rule-number">03</span>
+            <h3>场地与设备管理</h3>
+            <ul>
+                <li>各实验室分区负责人每日巡查</li>
+                <li>物品乱堆乱放单次罚款5元</li>
+                <li>设备借用必须登记报备</li>
+                <li>使用后工具须归位、收纳箱须关闭</li>
+                <li>配齐标准化竞赛应急工具包</li>
+            </ul>
+        </div>
+        
+        <div class="rule-card animate-on-scroll">
+            <span class="rule-number">04</span>
+            <h3>任务考核与训练管理</h3>
+            <ul>
+                <li>暑期训练、惩罚任务分年级差异化布置</li>
+                <li>设置多轮阶段性检查节点</li>
+                <li>截止前全员私信提醒</li>
+                <li>严查抄袭、AI敷衍行为，违规加重处罚</li>
+                <li>训练任务分设专项负责人全程跟进</li>
+            </ul>
+        </div>
+        
+        <div class="rule-card animate-on-scroll">
+            <span class="rule-number">05</span>
+            <h3>竞赛全流程标准化</h3>
+            <ul>
+                <li>赛事负责人按项目经理标准履职</li>
+                <li>提前制定备赛计划表</li>
+                <li>定期组织队内进度汇报会</li>
+                <li>申报材料多层复核，杜绝低级错误</li>
+                <li>赛后5日内完成全套资料云盘归档</li>
+                <li>赛后一周组织全员复盘</li>
+            </ul>
+        </div>
+        
+        <div class="rule-card animate-on-scroll">
+            <span class="rule-number">06</span>
+            <h3>财务经费管理</h3>
+            <ul>
+                <li>统一报销票据备注要求，留存订单凭证</li>
+                <li>分专人管理研究生、本科、竞赛经费</li>
+                <li>线上台账实时同步公示</li>
+                <li>采购、报销前须提前对接财务确认规范</li>
+                <li>快递、3D打印、耗材等票据须明细备注</li>
+            </ul>
+        </div>
+        
+        <div class="rule-card animate-on-scroll">
+            <span class="rule-number">07</span>
+            <h3>文档与成果规划</h3>
+            <ul>
+                <li>统一发放公文、报销、赛事归档全套模板</li>
+                <li>统一科普专利、期刊相关知识</li>
+                <li>引导大一大二提前规划科研成果</li>
+                <li>会议通知、竞赛申报统一使用实验室公文模板</li>
+                <li>建立科研成果系统化规划管理</li>
+            </ul>
+        </div>
+        
+        <div class="rule-card animate-on-scroll">
+            <span class="rule-number">08</span>
+            <h3>团队行为准则</h3>
+            <ul>
+                <li>德智体美劳全面发展</li>
+                <li>尊敬师长，踏实做人，踏实做事</li>
+                <li>积极主动向老师汇报学习工作情况</li>
+                <li>团结友爱、互相帮助、互相协作</li>
+                <li>愿意付出时间和精力，坚持长期收获</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="animate-on-scroll" style="margin-top: 2rem; background: var(--accent); color: white; padding: 1.5rem; border-radius: 8px; text-align: center;">
+        <h3 style="font-family: 'Noto Serif SC', serif; margin-bottom: 0.5rem;">清退情形（以下情况将请出团队）</h3>
+        <p style="font-size: 0.95rem;">
+            1. 在团队超3个月不认识其他成员 &nbsp;|&nbsp;
+            2. 三次无故未完成惩罚任务 &nbsp;|&nbsp;
+            3. 经认定工作不积极、拒不配合安排 &nbsp;|&nbsp;
+            4. 训练无明显进步且课程学习无进步
+        </p>
+    </div>
+</section>
+
+<!-- ===== ACHIEVEMENTS ===== -->
+<section id="achievements" class="section achievements-section">
+    <div class="section-header">
+        <h2>2025年度成果荣誉</h2>
+        <div class="en">Achievements & Honors</div>
+    </div>
+    
+    <div class="stats-grid">
+        <div class="stat-card animate-on-scroll">
+            <span class="stat-number">14+</span>
+            <div class="stat-label">国家级奖项</div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+            <span class="stat-number">30+</span>
+            <div class="stat-label">省级奖项</div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+            <span class="stat-number">9</span>
+            <div class="stat-label">学术论文</div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+            <span class="stat-number">6</span>
+            <div class="stat-label">实用新型专利</div>
+        </div>
+    </div>
+    
+    <div class="animate-on-scroll" style="margin-top: 3rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; position: relative; z-index: 2;">
+        <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.2);">
+            <h4 style="color: var(--gold); font-family: 'Noto Serif SC', serif; margin-bottom: 1rem;">主要获奖赛事</h4>
+            <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.9); font-size: 0.9rem;">
+                <li>▸ 中国大学生机械工程创新创意大赛</li>
+                <li>▸ 全国3D大赛</li>
+                <li>▸ 睿抗机器人开发者大赛</li>
+                <li>▸ 蓝桥杯</li>
+                <li>▸ 成图大赛</li>
+                <li>▸ 机械创新设计大赛</li>
+            </ul>
+        </div>
+        <div style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 12px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.2);">
+            <h4 style="color: var(--gold); font-family: 'Noto Serif SC', serif; margin-bottom: 1rem;">2026届升学去向</h4>
+            <ul style="list-style: none; padding: 0; color: rgba(255,255,255,0.9); font-size: 0.9rem;">
+                <li>▸ 湖南大学</li>
+                <li>▸ 浙江大学</li>
+                <li>▸ 南京理工大学</li>
+                <li>▸ 西南交通大学</li>
+                <li>▸ 哈尔滨工程大学</li>
+                <li>▸ 成都理工大学（直博）</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ===== SHARES ===== -->
+<section id="shares" class="section shares-section">
+    <div class="section-header">
+        <h2>经验分享</h2>
+        <div class="en">Experience Sharing</div>
+    </div>
+    
+    <div class="shares-grid">
+        <div class="share-card animate-on-scroll">
+            <div class="speaker">
+                <div class="speaker-avatar">张</div>
+                <div class="speaker-info">
+                    <h4>张扬</h4>
+                    <div class="topic">大学生涯规划与保研推免</div>
+                </div>
+            </div>
+            <p>大一贪玩导致绩点偏低，意识到绩点在推免评分体系权重极高后主动提升成绩。竞赛的核心收获是动手、协作与应急能力，不必只执着于奖项高低。推免实操上借鉴往届学长简历模板，主动邮件联系意向导师。</p>
+        </div>
+        
+        <div class="share-card animate-on-scroll">
+            <div class="speaker">
+                <div class="speaker-avatar">张</div>
+                <div class="speaker-info">
+                    <h4>张靖泽</h4>
+                    <div class="topic">挑战杯/互联网+商业转化</div>
+                </div>
+            </div>
+            <p>工科项目可分阶段迭代：先完成结构样机验证，再优化外观、搭载智能算法，完善商业方案后参与综合赛事。必须把专业技术参数转化为客户易懂的落地价值表述，兼顾工科与商科评委的评审偏好。</p>
+        </div>
+        
+        <div class="share-card animate-on-scroll">
+            <div class="speaker">
+                <div class="speaker-avatar">段</div>
+                <div class="speaker-info">
+                    <h4>段宏斌</h4>
+                    <div class="topic">企业实习心得</div>
+                </div>
+            </div>
+            <p>企业建模装配要求严格遵循固定顺序，无序装配会导致整体结构错乱。放下学历优越感，企业一线人员实操经验丰富，遇到难题主动请教，实操出错后及时修正才能快速积累工程经验。</p>
+        </div>
+        
+        <div class="share-card animate-on-scroll">
+            <div class="speaker">
+                <div class="speaker-avatar">孙</div>
+                <div class="speaker-info">
+                    <h4>孙洁</h4>
+                    <div class="topic">组织竞赛经验</div>
+                </div>
+            </div>
+            <p>赛前精细化编制赛事预算，大额采购收集三份以上报价，总预算预留5%-10%应急资金。赛中硬件、演示视频实行U盘、电脑、云端三重备份。赛后整理五大类资料归档，组织全员复盘形成可复用流程模板。</p>
+        </div>
+        
+        <div class="share-card animate-on-scroll">
+            <div class="speaker">
+                <div class="speaker-avatar">邹</div>
+                <div class="speaker-info">
+                    <h4>邹馨棋</h4>
+                    <div class="topic">参赛三年成长心得</div>
+                </div>
+            </div>
+            <p>大一零基础入门工业机器人赛事，依靠碎片化课余时间自学。大三担任队长独立带队，提前为队员缺位情况准备替代学习方案。不必过度纠结竞赛奖项，专注解决技术难题、和队友并肩奋斗的过程才是核心收获。</p>
+        </div>
+        
+        <div class="share-card animate-on-scroll">
+            <div class="speaker">
+                <div class="speaker-avatar">夏</div>
+                <div class="speaker-info">
+                    <h4>夏铭卓</h4>
+                    <div class="topic">成图大赛训练经验</div>
+                </div>
+            </div>
+            <p>拿下全省第一名的核心是全年累计四百小时建模练习。为提升建模速度主动学习适配快捷键的Inventor软件。利用B站等平台积累全套学习资源。不能只沉迷软件操作，要结合工程制造知识提升整体机械设计能力。</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===== QUOTE ===== -->
+<section class="quote-section">
+    <p class="quote-text animate-on-scroll">
+        规划好自己的大学生活，忙起来<br>
+        让大学的每一天都过得有意义
+    </p>
+    <p class="quote-author animate-on-scroll">— 胡波老师寄语</p>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact" class="cta-section">
+    <h2>准备好加入了吗？</h2>
+    <p>
+        如果你认为自己符合以上条件，愿意接受挑战、付出时间和精力，<br>
+        欢迎联系胡波老师，开启你在八教的成长之旅。
+    </p>
+    
+    <div class="contact-box animate-on-scroll">
+        <h3>联系胡波老师</h3>
+        <p style="margin-bottom:1rem;">请通过QQ联系，备注"机械工程专业+姓名+年级"</p>
+        <div class="qq">QQ: 20310841</div>
+    </div>
+    
+    <div class="animate-on-scroll" style="margin-top:2rem;color:var(--text-light);font-size:0.9rem;">
+        <p>双选时间：2026年8月3日 — 8月7日</p>
+        <p>每位导师每届限10人，名额有限，尽早联系</p>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <div class="footer-emblem">八教</div>
+    <h3>机械创新实验室（八教）团队</h3>
+    <p class="tagline">TEAM STRONG · 2007</p>
+    <p style="margin-top: 2rem; font-size: 0.85rem; opacity: 0.7;">
+        跨学科机械科创世界 · 期待你加入的八教<br>
+        机械工程 × 工业设计 × 电子信息 × 计算机 × 软件工程 × 工商管理
+    </p>
+</footer>
+
+<script>
+// Smooth scroll
+const navLinks = document.querySelectorAll('.nav a');
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+        }
+    });
+});
+
+// Scroll animations
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.animate-on-scroll').forEach(el => {
+    observer.observe(el);
+});
+
+// Active nav on scroll
+window.addEventListener('scroll', () => {
+    const sections = document.querySelectorAll('section[id]');
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute('id');
+        }
+    });
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + current) {
+            link.classList.add('active');
+        }
+    });
+});
+</script>
+
+</body>
+</html>
